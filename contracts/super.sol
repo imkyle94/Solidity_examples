@@ -17,10 +17,10 @@ contract Mother {
   }
 }
 
-contract Son is Father {
+contract Son is Father, Mother {
   event sonName(string name);
 
-  function who() public override {
+  function who() public override(Father, Mother) {
     super.who();
     emit sonName("Thor");
   }
