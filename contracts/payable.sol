@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.7.0 <0.9.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.0 <0.9.0;
 
-contract lec32 {
+contract Payable {
   event howMuch(uint256 _value);
 
   function sendNow(address payable _to) public payable {

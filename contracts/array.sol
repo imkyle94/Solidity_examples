@@ -1,10 +1,10 @@
-// SPDX-License-Identifier:GPL-30
-pragma solidity >=0.7.0 <0.9.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.0 <0.9.0;
 
-contract lec18 {
+contract Array {
   uint256[] public ageArray;
   uint256[10] public ageFixedSizeArray;
-  string[] public nameArray = ["Kal", "Jhon", "Kerri"];
+  string[] public nameArray = ["Odin", "Frigga", "Thor"];
 
   function AgeLength() public view returns (uint256) {
     return ageArray.length;

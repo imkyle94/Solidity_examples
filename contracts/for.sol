@@ -1,27 +1,26 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.0 <0.9.0;
 
-pragma solidity >=0.7.0 <0.9.0;
+contract For {
+  string[] private countryList = [
+    "South Korea",
+    "North Korea",
+    "USA",
+    "China",
+    "Japan"
+  ];
 
-contract lec24 {
-    string[] private countryList = [
-        "South Korea",
-        "North Korea",
-        "USA",
-        "China",
-        "Japan"
-    ];
-
-    function linearSearch(string memory _search)
-        public
-        view
-        returns (int256, string memory)
-    {
-        for (uint256 i = 0; i < countryList.length; i++) {
-            if (keccak256(bytes(countryList[i])) == keccak256(bytes(_search))) {
-                return (i, countryList[i]);
-            }
-        }
-
-        return (99, "Nothing");
+  function linearSearch(string memory _search)
+    public
+    view
+    returns (int256, string memory)
+  {
+    for (uint256 i = 0; i < countryList.length; i++) {
+      if (keccak256(bytes(countryList[i])) == keccak256(bytes(_search))) {
+        return (i, countryList[i]);
+      }
     }
+
+    return (99, "Nothing");
+  }
 }
