@@ -40,6 +40,41 @@ string을 쓰기위해서는 memory 일식적으로 저장하는 키워드를 �
     3.call : 가변적인 gas 소비 (gas값 지정 가능), 성공여부를 true 또는 false로 리턴
       재진입(reentrancy) 공격 위험성 있음, 2019년 12월 이후 call 사용을 추천. 
 
+### fallback, receive
+fallback
+이름 그대로 대비책 함수 입니다. 
+
+특징 
+1. 먼저 무기명 함수, 이름이 없는 함수입니다.
+2. external 필수 
+3. payable 필수 
+
+왜 쓰는가 ?
+1. 스마트 컨트랙이 이더를 받을 수 있게 한다.
+2. 이더 받고 난  후  어떠한 행동을 취하게 할 수 있다. 
+3. call함수로 없는 함수가 불려질때, 어떠한 행동을 취하게 할 수 있다. 
+
+0.6 이후 fallback 
+ 
+fallback은 recevie 와 fallback 으로 두가지 형태로 나뉘게 되었습니다.
+
+receive:  순수하게 이더만  받을때 작동 합니다. 
+fallback: 함수를 실행하면서 이더를 보낼때, 불려진 함수가 없을 때 작동합니다.
+
+기본형 :  불려진 함수가 특정 스마트 컨트랙이 없을때 fallback 함수가 발동 합니다. 
+fallback() external {
+   
+  }
+
+payable 적용시 : 이더를 받고 나서도 fallaback 함수가 발동합니다. 
+fallback() external payable {
+   
+  }
+
+receive() external payable{
+    
+}
+
     
 ### Library
 이점
@@ -51,3 +86,12 @@ string을 쓰기위해서는 memory 일식적으로 저장하는 키워드를 �
 1. fallback 함수 불가: fallback 함수를 라이브러리 안에 정의를 못 하기에, 이더를 갖고 있을 수 없습니다.
 2. 상속 불가
 3. payable 함수 정의 불가 
+
+### Proxy or Upgradable Contract
+upgradeble smart contract framework
+
+코드가 수정이 필요하다거나, 새로운 코드를 연결하고 싶다. 기존의 환경은 익숙하지만, 이더리움 네트워크에서는?
+이를 해결하기 위해 제시된 개념이다.
+
+delegate call 의 대한 개념 파악이 필요하다.
+
